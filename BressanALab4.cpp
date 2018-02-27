@@ -1,7 +1,7 @@
 //Anthony Bressan
 //CPSC 121 Lab 4
 //02/26/2018
-
+#include "stdafx.h"
 #include <iostream> 
 using namespace std; 
   
@@ -16,9 +16,9 @@ void printBetween(int a, int b)
 { 
     for (int i = a; i <= b; i++) 
     { 
-        cout << i << " "; 
-        cout << endl; 
+        cout << i << " ";  
     } 
+    cout << endl;
 } 
 
 //Prime function
