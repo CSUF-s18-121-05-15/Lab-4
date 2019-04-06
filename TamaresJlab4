@@ -1,0 +1,176 @@
+//Justin Tamares
+//CPSC 121 Lab 4
+//2/19/18
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+void hello(); //Function prototypes for
+void printBetween(int a, int b);
+bool isPrime(int n);
+int leastCommonDenominator(int a, int b);
+void squaredOpposite(int &value);
+
+int main()
+{
+	int choice, num1, num2, num3, num4, num5, num6; // multiple num for different functions
+	string answer; //Accepted answer to repeat is y or Y
+	do
+	{
+		cout << "Please select one option from the following:" << endl;
+		cout << "1 Hello World!" << endl;
+		cout << "2 Number Printing" << endl;
+		cout << "3 Prime Numbers" << endl;
+		cout << "4 Least Common factor" << endl;
+		cout << "5 Squaring Opposites" << endl;
+		cin >> choice;
+		switch (choice) //Cases are used in order to make an organized menu
+		{
+		case 1:
+		{
+			hello();
+			cout << "Do you want to continue?" << endl;
+			cout << "Yes or No?" << endl;
+			cin >> answer;
+			break;
+		}
+		case 2:
+		{
+			cout << "Please enter your first number" << endl;
+			cin >> num1;
+			cout << "Please enter your second number" << endl;
+			cin >> num2;
+			printBetween(num1, num2);
+			cout << "Do you want to continue?" << endl;
+			cout << "Yes or No?" << endl;
+			cin >> answer;
+			break;
+		}
+		case 3:
+		{
+			cout << "Please enter a number" << endl;
+			cin >> num3;
+			
+			if (isPrime(num3)) //boolean value is either true or false (0)
+			{
+				cout << "Your number is prime" << endl;
+			}
+			else
+			{
+				cout << "Your number is not prime" << endl;
+			}
+			cout << "Do you want to continue?" << endl;
+			cout << "Yes or No?" << endl;
+			cin >> answer;
+			break;
+		}
+		case 4:
+		{
+			
+			cout << "Please enter your first number" << endl;
+			cin >> num4;
+			
+			cout << "Please enter your second number" << endl;
+			cin >> num5;
+		
+			cout << "Your least common denominator is " << leastCommonDenominator(num4, num5) << endl;
+			cout << "Do you want to continue?" << endl;
+			cout << "Yes or No?" << endl;
+			cin >> answer;
+			break;
+		}
+		case 5:
+		{
+		
+			cout << "Please enter a number" << endl;
+			cin >> num6;
+		
+			squaredOpposite(num6);
+			cout << num6 << endl;
+			cout << "Do you want to continue?" << endl;
+			cout << "Yes or No?" << endl;
+			cin >> answer;
+			break;
+		}
+
+		}
+	} while (answer == "y" || answer == "Y"); //y is not case sensitive
+	system("pause");
+	return 0;
+}
+
+void hello() //Displays "Hello World"
+{
+	cout << "Hello World!" << endl;
+}
+
+void printBetween(int a, int b)
+{
+	//For when the initial input is greater than the following input
+	if (a > b)
+	{
+		for (int num = b; b <= a; b++)
+		{
+			cout << b << " ";
+		}
+	}
+	//For when b is greater than a.
+	else if (b > a)
+	{
+		for (int num = a; a <= b; a++)
+		{
+			cout << a << " ";
+		}
+	}
+}
+
+bool isPrime(int n)
+{
+	//Initializes isPrime as true
+	bool isPrime = true;
+	int i;
+	for (i = 2; i <= n / 2; i++)
+	{
+		if (n % i == 0)
+		{
+			//If the result of n % i equals 0, isPrime becomes false
+			isPrime = false;
+		}
+	}
+	//if isPrime is true, the number is a prime number
+	if (isPrime)
+		return true;
+	else
+		return false;
+}
+
+int leastCommonDenominator(int a, int b)
+{
+	int result, product;
+
+	product = a*b;
+	for (result = 1; result <= product; result++)
+	{
+		if (product % result == 0 && result % a == 0 && result % b == 0)
+		{
+			return result;
+			break;
+		}
+	}
+}
+
+void squaredOpposite(int &value) //reference variable used
+{
+	if (value >= 0)
+	{
+		value *= value;
+		value *= -1;
+		cout << endl;
+	}
+	else if (value < 0)
+	{
+		value *= value;
+		cout << endl;
+	}
+}
